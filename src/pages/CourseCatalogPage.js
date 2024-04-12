@@ -10,7 +10,8 @@ const dummyCourses = [
     category: "Technology",
     difficulty: "Beginner",
     popularity: 4.5,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://blogassets.leverageedu.com/blog/wp-content/uploads/2019/10/23170101/List-of-Professional-Courses-after-Graduation.gif",
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const dummyCourses = [
     category: "Business",
     difficulty: "Intermediate",
     popularity: 4.2,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://www.classcentral.com/report/wp-content/uploads/2020/06/top-100-course-pandemic.png",
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ const dummyCourses = [
     category: "Technology",
     difficulty: "Beginner",
     popularity: 4.7,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://foundr.com/wp-content/uploads/2021/09/Best-online-course-platforms.png",
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ const dummyCourses = [
     category: "Business",
     difficulty: "Intermediate",
     popularity: 4.0,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://lh5.googleusercontent.com/proxy/tinTsQjvZ2xtlPoGLVtCWD-yriZj9MJgxIf8apXzf7ojXSPOzVFg_07A9yzXaLCguwZ1fze43W9Q8RBHTA",
   },
   {
     id: 5,
@@ -48,7 +52,8 @@ const dummyCourses = [
     category: "Technology",
     difficulty: "Intermediate",
     popularity: 4.6,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://foundr.com/wp-content/uploads/2021/09/Best-online-course-platforms.png",
   },
   {
     id: 6,
@@ -58,7 +63,8 @@ const dummyCourses = [
     category: "Social Sciences",
     difficulty: "Beginner",
     popularity: 4.3,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-oX8CahAYCtAKcKH6j8OkTGFSFwr0DKq4_SVTdv_SaVBw0EkJExtl8DnlzLO_4XUMTxM&usqp=CAU",
   },
   {
     id: 7,
@@ -68,7 +74,8 @@ const dummyCourses = [
     category: "Arts & Design",
     difficulty: "Beginner",
     popularity: 4.1,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://ontariocoursepreview.tvo.org/cdn/shop/t/6/assets/img-hero-coursecat.svg?v=139047362454786900271611358720",
   },
   {
     id: 8,
@@ -78,7 +85,8 @@ const dummyCourses = [
     category: "Technology",
     difficulty: "Intermediate",
     popularity: 4.8,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://www.classcentral.com/report/wp-content/uploads/2022/09/Graphic-Design-BCG-Banner.png",
   },
   {
     id: 9,
@@ -88,7 +96,8 @@ const dummyCourses = [
     category: "Business",
     difficulty: "Intermediate",
     popularity: 4.4,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN_-iRUFqQ7jwXMT-786vYSyLdkMTlFLWgqqgQyDQYk7JuTNR8gOALx4mgg7oywj717UI&usqp=CAU",
   },
   {
     id: 10,
@@ -98,7 +107,30 @@ const dummyCourses = [
     category: "Language",
     difficulty: "Beginner",
     popularity: 4.2,
-    thumbnail: "https://via.placeholder.com/150",
+    thumbnail:
+      "https://foundr.com/wp-content/uploads/2021/09/Best-online-course-platforms.png",
+  },
+  {
+    id: 11,
+    title: "Spanish Language Basics",
+    description:
+      "Learn the basics of the Spanish language including grammar and vocabulary.",
+    category: "Language",
+    difficulty: "Beginner",
+    popularity: 4.2,
+    thumbnail:
+      "https://foundr.com/wp-content/uploads/2021/09/Best-online-course-platforms.png",
+  },
+  {
+    id: 12,
+    title: "Spanish Language Basics",
+    description:
+      "Learn the basics of the Spanish language including grammar and vocabulary.",
+    category: "Language",
+    difficulty: "Beginner",
+    popularity: 4.2,
+    thumbnail:
+      "https://foundr.com/wp-content/uploads/2021/09/Best-online-course-platforms.png",
   },
   // Add more courses as needed
 ];
@@ -134,53 +166,58 @@ const CourseCatalogPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Search Bar */}
-      <input
-        type="text"
-        placeholder="Search courses..."
-        className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <h3 className="text-2xl font-semibold mb-6">Explore Courses</h3>
+      <div className="flex items-center justify-between mb-4 space-x-4">
+        {/* Search Bar */}
+        <input
+          type="text"
+          placeholder="Search courses..."
+          className="w-full px-6  py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
 
-      {/* Filtering Options */}
-      <div className="flex mb-4">
-        {/* Category Filter */}
-        <select
-          className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="">All Categories</option>
-          <option value="Technology">Technology</option>
-          <option value="Business">Business</option>
-          {/* Add more options as needed */}
-        </select>
+        {/* Filtering Options */}
+        <div className="flex mb-4">
+          {/* Category Filter */}
+          <select
+            className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            <option value="Technology">Technology</option>
+            <option value="Business">Business</option>
+            <option value="Social Sciences">Social Sciences</option>
+            <option value="Arts & Design">Arts & Design</option>
+            <option value="Language">Language</option>
+          </select>
 
-        {/* Difficulty Filter */}
-        <select
-          className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          value={selectedDifficulty}
-          onChange={(e) => setSelectedDifficulty(e.target.value)}
-        >
-          <option value="">All Difficulty Levels</option>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
-        </select>
+          {/* Difficulty Filter */}
+          <select
+            className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            value={selectedDifficulty}
+            onChange={(e) => setSelectedDifficulty(e.target.value)}
+          >
+            <option value="">All Difficulty Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
 
-        {/* Sort By */}
-        <select
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-        >
-          <option value="">Sort By</option>
-          <option value="popularity">Popularity (Low to High)</option>
-          <option value="popularity_high_to_low">
-            Popularity (High to Low)
-          </option>
-        </select>
+          {/* Sort By */}
+          <select
+            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="popularity">Popularity (Low to High)</option>
+            <option value="popularity_high_to_low">
+              Popularity (High to Low)
+            </option>
+          </select>
+        </div>
       </div>
 
       {/* Course Cards */}
@@ -188,7 +225,7 @@ const CourseCatalogPage = () => {
         {sortedCourses.map((course) => (
           <div
             key={course.id}
-            className="bg-white shadow-md rounded-md overflow-hidden"
+            className="bg-white shadow-md rounded-md overflow-hidden transform transition-transform hover:scale-105"
           >
             <img
               src={course.thumbnail}
