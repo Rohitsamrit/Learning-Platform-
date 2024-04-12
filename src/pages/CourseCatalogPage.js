@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Homepage from "./Homepage";
 
 // Dummy course data
 const dummyCourses = [
@@ -165,89 +166,93 @@ const CourseCatalogPage = () => {
   }); // Sort B
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h3 className="text-2xl font-semibold mb-6">Explore Courses</h3>
-      <div className="flex items-center justify-between mb-4 space-x-4">
-        {/* Search Bar */}
-        <input
-          type="text"
-          placeholder="Search courses..."
-          className="w-full px-6  py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+    <Homepage>
+      <div className="container mx-auto px-4 py-8">
+        {/* <h3 className="text-2xl font-semibold mb-6">Explore Courses</h3> */}
+        <div className="flex items-center justify-between mb-4 space-x-4">
+          {/* Search Bar */}
+          <input
+            type="text"
+            placeholder="Search courses..."
+            className="w-full px-6  py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
 
-        {/* Filtering Options */}
-        <div className="flex mb-4">
-          {/* Category Filter */}
-          <select
-            className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Technology">Technology</option>
-            <option value="Business">Business</option>
-            <option value="Social Sciences">Social Sciences</option>
-            <option value="Arts & Design">Arts & Design</option>
-            <option value="Language">Language</option>
-          </select>
+          {/* Filtering Options */}
+          <div className="flex mb-4">
+            {/* Category Filter */}
+            <select
+              className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">All Categories</option>
+              <option value="Technology">Technology</option>
+              <option value="Business">Business</option>
+              <option value="Social Sciences">Social Sciences</option>
+              <option value="Arts & Design">Arts & Design</option>
+              <option value="Language">Language</option>
+            </select>
 
-          {/* Difficulty Filter */}
-          <select
-            className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-            value={selectedDifficulty}
-            onChange={(e) => setSelectedDifficulty(e.target.value)}
-          >
-            <option value="">All Difficulty Levels</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
-          </select>
+            {/* Difficulty Filter */}
+            <select
+              className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              value={selectedDifficulty}
+              onChange={(e) => setSelectedDifficulty(e.target.value)}
+            >
+              <option value="">All Difficulty Levels</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
 
-          {/* Sort By */}
-          <select
-            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value="">Sort By</option>
-            <option value="popularity">Popularity (Low to High)</option>
-            <option value="popularity_high_to_low">
-              Popularity (High to Low)
-            </option>
-          </select>
+            {/* Sort By */}
+            <select
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="">Sort By</option>
+              <option value="popularity">Popularity (Low to High)</option>
+              <option value="popularity_high_to_low">
+                Popularity (High to Low)
+              </option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      {/* Course Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {sortedCourses.map((course) => (
-          <div
-            key={course.id}
-            className="bg-white shadow-md rounded-md overflow-hidden transform transition-transform hover:scale-105"
-          >
-            <img
-              src={course.thumbnail}
-              alt={course.title}
-              className="w-full h-40 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold mb-2">{course.title}</h2>
-              <p className="text-sm text-gray-600 mb-4">{course.description}</p>
-              <div className="flex justify-between items-center">
-                <p className="text-sm text-gray-500">
-                  {course.category} | {course.difficulty}
+        {/* Course Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {sortedCourses.map((course) => (
+            <div
+              key={course.id}
+              className="bg-white shadow-md rounded-md overflow-hidden transform transition-transform hover:scale-105"
+            >
+              <img
+                src={course.thumbnail}
+                alt={course.title}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold mb-2">{course.title}</h2>
+                <p className="text-sm text-gray-600 mb-4">
+                  {course.description}
                 </p>
-                <p className="text-sm text-gray-500">
-                  Popularity: {course.popularity}
-                </p>
+                <div className="flex justify-between items-center">
+                  <p className="text-sm text-gray-500">
+                    {course.category} | {course.difficulty}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Popularity: {course.popularity}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </Homepage>
   );
 };
 
