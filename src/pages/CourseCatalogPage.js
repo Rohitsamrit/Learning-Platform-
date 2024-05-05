@@ -142,6 +142,7 @@ const CourseCatalogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
 
   // Filter courses based on search query, category, and difficulty
   const filteredCourses = courses.filter((course) => {
@@ -169,59 +170,71 @@ const CourseCatalogPage = () => {
     <Homepage>
       <div className="container mx-auto px-4 py-8">
         {/* <h3 className="text-2xl font-semibold mb-6">Explore Courses</h3> */}
-        <div className="flex items-center justify-between mb-4 space-x-4">
+        <div className="flex items-center justify-between mb-4">
           {/* Search Bar */}
           <input
             type="text"
             placeholder="Search courses..."
-            className="w-full px-6  py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-4/5 px-6 py-2.5 mb-4 border border-red-900 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
 
-          {/* Filtering Options */}
-          <div className="flex mb-4">
-            {/* Category Filter */}
-            <select
-              className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+          {/* Filter Options */}
+          <div className="relative">
+            {/* Filter Button */}
+            <button
+              className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
+              onClick={() => setShowFilters(!showFilters)}
             >
-              <option value="">All Categories</option>
-              <option value="Technology">Technology</option>
-              <option value="Business">Business</option>
-              <option value="Social Sciences">Social Sciences</option>
-              <option value="Arts & Design">Arts & Design</option>
-              <option value="Language">Language</option>
-            </select>
+              Filter
+            </button>
 
-            {/* Difficulty Filter */}
-            <select
-              className="px-4 py-2 mr-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-              value={selectedDifficulty}
-              onChange={(e) => setSelectedDifficulty(e.target.value)}
-            >
-              <option value="">All Difficulty Levels</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-            </select>
+            {/* Dropdown for Filter Options */}
+            {showFilters && (
+              <div className="absolute right-0 mt-2 bg-white border border-gray-300 rounded-md shadow-md w-64 z-10">
+                {/* Category Filter */}
+                <select
+                  className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 focus:shadow-md transition-all duration-200"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                >
+                  <option value="">All Categories</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Business">Business</option>
+                  <option value="Social Sciences">Social Sciences</option>
+                  <option value="Arts & Design">Arts & Design</option>
+                  <option value="Language">Language</option>
+                </select>
 
-            {/* Sort By */}
-            <select
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              <option value="">Sort By</option>
-              <option value="popularity">Popularity (Low to High)</option>
-              <option value="popularity_high_to_low">
-                Popularity (High to Low)
-              </option>
-            </select>
+                {/* Difficulty Filter */}
+                <select
+                  className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none focus:border-blue-500 focus:shadow-md transition-all duration-200"
+                  value={selectedDifficulty}
+                  onChange={(e) => setSelectedDifficulty(e.target.value)}
+                >
+                  <option value="">All Difficulty Levels</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+
+                {/* Sort By */}
+                <select
+                  className="w-full px-4 py-3 focus:outline-none focus:border-blue-500 focus:shadow-md transition-all duration-200"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <option value="">Sort By</option>
+                  <option value="popularity">Popularity (Low to High)</option>
+                  <option value="popularity_high_to_low">
+                    Popularity (High to Low)
+                  </option>
+                </select>
+              </div>
+            )}
           </div>
         </div>
-
         {/* Course Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {sortedCourses.map((course) => (

@@ -119,13 +119,13 @@ const UserProfile = () => {
                 <div key={badge.id} className="items-center mr-10 ml-8 mb-2">
                   <div className="badge">
                     <img
-                      className="w-14 h-14 rounded-full "
+                      className="w-14 h-14 rounded-full"
                       style={{ width: "7rem", height: "7rem" }}
                       src={badge.imageUrl}
                       alt={badge.name}
                     />
+                    <span className="text-sm text-gray-900">{badge.name}</span>
                   </div>
-                  <span className="text-sm ml-7">{badge.name}</span>
                 </div>
               ))}
             </div>
